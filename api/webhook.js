@@ -124,9 +124,13 @@ export default async function handler(req, res) {
       console.error('supabase insert error', insertErr);
     }
 
-    if (process.env.VESSEL_URL) {
+    // Optional forwarding to a URL (previously named VESSEL_URL).
+    // Many users prefer to forward to an external service; set `VERCEL_URL` or another
+    // env var in your deployment to enable forwarding. Using `VERCEL_URL` here follows
+    // the user's preference, but you can change this to any env var name you prefer.
+    if (process.env.VERCEL_URL) {
       try {
-        await axios.post(process.env.VESSEL_URL, compact, {
+        await axios.post(process.env.VERCEL_URL, compact, {
           headers: {
             'content-type': 'application/json',
             'x-forwarded-by': 'tv-webhook-vercel',
@@ -134,7 +138,7 @@ export default async function handler(req, res) {
           timeout: 7000,
         });
       } catch (fwdErr) {
-        console.error('forward to vessel failed', fwdErr?.message || fwdErr);
+        console.error('forward failed', fwdErr?.message || fwdErr);
       }
     }
 

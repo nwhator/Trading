@@ -1,5 +1,5 @@
 {
-  "name": "trading-view-supabase-vercel",
+  "name": "trading-view",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,10 +7,10 @@
     "lint": "eslint . --ext .js"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.30.0",
-    "axios": "^1.4.0"
+    "@supabase/supabase-js": "^2.81.1",
+    "axios": "^1.13.2"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.21.0"
   }
 }
