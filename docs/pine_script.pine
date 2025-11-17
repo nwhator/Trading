@@ -1,0 +1,35 @@
+//@version=5
+strategy("Simple Alert Example", overlay=true, margin_long=100, margin_short=100)
+
+// Simple moving average crossover example — replace with your strategy
+fast = ta.sma(close, 9)
+slow = ta.sma(close, 21)
+
+longCond = ta.crossover(fast, slow)
+shortCond = ta.crossunder(fast, slow)
+
+if (longCond)
+    strategy.entry("Long", strategy.long)
+if (shortCond)
+    strategy.entry("Short", strategy.short)
+
+// Alert message template: compact JSON matching webhook receiver
+// Paste this into the TradingView alert message field (Webhook URL → set to your endpoint)
+// Keep it exactly as shown (remove comment markers) so TradingView expands placeholders
+/*
+{
+  "signal": "{{strategy.position_size}}",
+  "action": "{{strategy.order.action}}",
+  "ticker": "{{ticker}}",
+  "time": "{{time}}",
+  "price": "{{close}}",
+  "interval": "{{interval}}",
+  "secret": "my-super-secret-token"
+}
+*/
+
+// Optional: fire alert programmatically when condition occurs (use if you want)
+if (longCond)
+    alert('LONG alert triggered', alert.freq_once_per_bar_close)
+if (shortCond)
+    alert('SHORT alert triggered', alert.freq_once_per_bar_close)
