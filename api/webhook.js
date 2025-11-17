@@ -3,8 +3,9 @@ import crypto from 'crypto';
 import axios from 'axios';
 import { supabase } from '../lib/supabase.js';
 
+// Use Vercel-supported runtime identifier. Keep Node version pinned in package.json
 export const config = {
-  runtime: 'nodejs18.x',
+  runtime: 'nodejs',
 };
 
 function buildCompact(payload) {
