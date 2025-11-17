@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TradingView Webhook</title>
+    <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:720px;margin:4rem auto;padding:1rem;color:#111}a{color:#0366d6}</style>
+  </head>
+  <body>
+    <h1>TradingView Webhook</h1>
+    <p>This project exposes a webhook at <code>/api/webhook</code> that accepts TradingView alerts and stores them (Supabase) and optionally forwards them.</p>
+    <ul>
+      <li>API endpoint: <code>/api/webhook</code></li>
+      <li>HMAC header: <code>x-tv-signature</code> (optional)</li>
+      <li>Plain token header: <code>x-tv-secret</code> (falls back)</li>
+    </ul>
+    <p>See the <a href="/README.md">README</a> for testing steps, TradingView setup and deployment notes.</p>
+  </body>
+</html>
